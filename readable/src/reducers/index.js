@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { ADD_CATEGORIES } from '../actions';
+import { ADD_CATEGORIES, ADD_POSTS } from '../actions';
 
 const category = (state = {}, action ) => {
 
@@ -17,4 +17,19 @@ const category = (state = {}, action ) => {
   }
 }
 
-export default combineReducers({ category })
+const post = (state = {}, action ) => {
+
+  let { posts } = action;
+
+  switch (action.type){
+    case ADD_POSTS:
+      return {
+        ...state,
+        posts
+      }
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ category, post })

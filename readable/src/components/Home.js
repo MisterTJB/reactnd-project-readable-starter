@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import Categories from './Categories'
+import Categories from './Categories';
+import Posts from './Posts';
 
 class Home extends Component {
   render(){
-    return ( <Categories /> )
+    return (
+      <main>
+        <Categories />
+        <Posts />
+      </main>
+    )
   }
 }
 
