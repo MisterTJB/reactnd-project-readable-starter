@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import reducers from '../reducers'
 
 import Home from './Home';
+import PostDetail from './PostDetail';
 
 const store = createStore(
   reducers,
@@ -17,8 +18,8 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div>
-            <Route path="/" component={Home} />
-
+            <Route exact path="/" component={Home} />
+            <Route exact path="/posts/:id" component={PostDetail} />
           </div>
         </BrowserRouter>
       </Provider>
