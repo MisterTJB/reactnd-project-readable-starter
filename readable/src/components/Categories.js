@@ -7,31 +7,24 @@ import Category from './Category';
 
 class Categories extends Component {
 
-  state = {
-    categories: null
-  }
-
   componentDidMount(){
 
-    let categories = [
-      "One", "Two", "Three"
-    ]
-
-    let { addCategories } = this.props;
-
-    addCategories({ categories })
-
+    getCategories().then(
+      result => {
+        let { categories } = result
+        let { addCategories } = this.props;
+        addCategories( { categories } )
+      });
   }
 
   render(){
 
     let { categories } = this.props;
-    console.log(categories)
 
     return (
       <ul>
         { categories && categories.map( category =>
-          <li key={category}><Category categoryName={category} /></li>)}
+          <li key={category.path}><Category name={category.name} path={category.path} /></li>)}
       </ul>
     )
   }

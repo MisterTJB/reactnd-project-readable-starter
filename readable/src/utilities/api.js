@@ -4,6 +4,7 @@ export const getCategories = _ => {
 
   return fetch(ROUTES.categories, { headers:
     { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' } })
+    .then( res => res.json() )
 }
 
 const ROUTES = {
