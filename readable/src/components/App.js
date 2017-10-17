@@ -14,7 +14,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div>
-          <Route path="/" component={Home} />
+            <Route path="/" component={Home} />
           </div>
         </BrowserRouter>
       </Provider>
