@@ -12,6 +12,12 @@ export const getPosts = _ => {
     .then( res => res.json() )
 }
 
+export const getPost = (id) => {
+  return fetch(`${ROUTES.posts}/${id}`, { headers:
+    { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' } })
+    .then( res => res.json() )
+}
+
 const ROUTES = {
   categories: `${SERVER_ROOT}/categories`,
   posts: `${SERVER_ROOT}/posts`

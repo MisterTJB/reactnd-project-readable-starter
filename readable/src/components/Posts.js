@@ -12,7 +12,7 @@ class Posts extends Component {
     getPosts().then(
       posts => {
         let { addPosts } = this.props;
-        addPosts( { posts } )
+        addPosts(posts)
       });
   }
 
@@ -23,7 +23,7 @@ class Posts extends Component {
     return (
       <ul>
         { posts && posts.map( post =>
-          <li key={post.id}><Post /></li>)}
+          <li key={post.id}><Post id={post.id} /></li>)}
       </ul>
     )
   }
@@ -31,7 +31,7 @@ class Posts extends Component {
 
 const mapStateToProps = state => {
   return {
-    posts: state.post.posts
+    posts: state.posts
   }
 }
 

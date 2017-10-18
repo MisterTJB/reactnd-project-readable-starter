@@ -13,14 +13,13 @@ class Categories extends Component {
       result => {
         let { categories } = result
         let { addCategories } = this.props;
-        addCategories( { categories } )
+        addCategories(categories)
       });
   }
 
   render(){
 
-    let { categories } = this.props;
-
+    let categories = this.props.categories;
     return (
       <ul>
         { categories && categories.map( category =>
@@ -31,8 +30,9 @@ class Categories extends Component {
 }
 
 const mapStateToProps = state => {
+
   return {
-    categories: state.category.categories
+    ...state
   }
 }
 
