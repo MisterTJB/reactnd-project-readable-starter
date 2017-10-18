@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addPost } from '../actions'
 import { getPost } from '../utilities/api';
+import moment from 'moment';
 
 class PostDetail extends Component {
 
@@ -11,25 +12,35 @@ class PostDetail extends Component {
 
     getPost(id).then(
       result => {
-        console.log(result);
         let { addPost } = this.props;
-        addPost( { post: result } )
+        addPost( result )
       });
   }
 
   render(){
 
-    let { id } = this.props.match.params
+    if (!this.props.post){
+      return <h1>Loading</h1>
+    } else {
+      let { title, author, timestamp, voteScore, body } = this.props.post
 
-    return (
-      <h1>Post detail for {id}</h1>
-    )
+      return (
+        <div>
+          <h1>{title}</h1>
+          <h2>By {author}</h2>
+          <span>{ moment(Number(timestamp)).fromNow() }</span>
+          <span>{voteScore}</span>
+          { body.split('\n').map( p => <p>{ p }</p>) }
+        </div>
+      )
+    }
+
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    posts: state.posts
+    post: state.posts.filter( post => post.id === ownProps.match.params.id)[0]
   }
 }
 

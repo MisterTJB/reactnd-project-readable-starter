@@ -23,7 +23,7 @@ class Posts extends Component {
     return (
       <ul>
         { posts && posts.map( post =>
-          <li key={post.id}><Post id={post.id} /></li>)}
+          <li key={post.id}><Post {...post} /></li>)}
       </ul>
     )
   }

@@ -21,27 +21,13 @@ const categories = ( state = [], action ) => {
 
 }
 
-const post = (state = [], action) => {
-
-  switch (action.type){
-    case ADD_POST:
-      // Ensure that this post is not already represented, then add it
-      return state.filter( post => post.id !== action.post.id).push(action.post)
-    default:
-      return state
-  }
-
-}
-
 const posts = (state = [], action ) => {
-
-  let { posts } = action;
 
   switch (action.type){
     case ADD_POSTS:
-      return posts
+      return action.posts
     case ADD_POST:
-      return post(state, action)
+      return [...state.filter( post => post.id !== action.post.id), action.post]
     default:
       return state;
   }
