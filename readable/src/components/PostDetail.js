@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addPost } from '../actions'
-import { getPost } from '../utilities/api';
+import { addPost, addComments } from '../actions'
+import { getPost, getComments } from '../utilities/api';
 import moment from 'moment';
+import Comment from './Comment'
 
 class PostDetail extends Component {
 
@@ -13,13 +14,20 @@ class PostDetail extends Component {
     getPost(id).then(
       result => {
         let { addPost } = this.props;
-        addPost( result )
+        addPost(result)
+
+        getComments(id).then(
+          result => {
+            let { addComments } = this.props
+            addComments(result, id)
+          }
+        )
       });
   }
 
   render(){
 
-    if (!this.props.post){
+    if (!this.props.post || !this.props.comments){
       return <h1>Loading</h1>
     } else {
       let { title, author, timestamp, voteScore, body } = this.props.post
@@ -30,23 +38,25 @@ class PostDetail extends Component {
           <h2>By {author}</h2>
           <span>{ moment(Number(timestamp)).fromNow() }</span>
           <span>{voteScore}</span>
-          { body.split('\n').map( p => <p>{ p }</p>) }
+          { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
+          { this.props.comments.map( comment => { <Comment {...comment} /> } ) }
         </div>
       )
     }
-
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    post: state.posts.filter( post => post.id === ownProps.match.params.id)[0]
+    post: state.posts.filter( post => post.id === ownProps.match.params.id)[0],
+    comments: state.comments.filter( comment => comment.parentId === ownProps.match.params.id)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPost: d => dispatch(addPost(d))
+    addPost: d => dispatch(addPost(d)),
+    addComments: d => dispatch(addComments(d))
   }
 }
 

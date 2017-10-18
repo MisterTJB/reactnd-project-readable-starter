@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_CATEGORIES, ADD_POSTS, ADD_POST } from '../actions';
+import { ADD_CATEGORIES, ADD_POSTS, ADD_POST, ADD_COMMENTS } from '../actions';
 
 const initialState = {
     posts: [],
@@ -33,5 +33,13 @@ const posts = (state = [], action ) => {
   }
 }
 
+const comments = (state = [], action) => {
+  switch (action.type){
+    case ADD_COMMENTS:
+      return [...state.filter( comment => comment.parentId !== action.postId), ...action.comments]
+    default:
+      return state
+  }
+}
 
-export default combineReducers({ categories, posts })
+export default combineReducers({ categories, posts, comments })

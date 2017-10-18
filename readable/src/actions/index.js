@@ -1,6 +1,7 @@
 export const ADD_CATEGORIES = 'ADD_CATEGORIES';
 export const ADD_POSTS = 'ADD_POSTS';
 export const ADD_POST = 'ADD_POST';
+export const ADD_COMMENTS = 'ADD_COMMENTS';
 
 export function addCategories(categories){
   return {
@@ -21,4 +22,12 @@ export function addPost(post){
     type: ADD_POST,
     post
     }
+}
+
+export function addComments(comments, postId){
+  return {
+    type: ADD_COMMENTS,
+    comments,
+    id: postId
+  }
 }
