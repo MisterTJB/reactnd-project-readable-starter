@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Categories from './Categories';
 import Posts from './Posts';
+import PostForm from './PostForm';
 
 class Home extends Component {
   render(){
@@ -8,6 +9,7 @@ class Home extends Component {
       <main>
         <Categories />
         <Posts />
+        <PostForm />
       </main>
     )
   }
