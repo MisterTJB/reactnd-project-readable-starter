@@ -4,6 +4,7 @@ import { addPosts } from '../actions'
 import { getPostsByCategory } from '../utilities/api';
 
 import Post from './Post';
+import PostForm from './PostForm';
 
 class CategoryView extends Component {
 
@@ -21,12 +22,16 @@ class CategoryView extends Component {
   render(){
 
     let { posts } = this.props;
+    let { category } = this.props.match.params;
 
     return (
-      <ul>
-        { posts && posts.map( post =>
-          <li key={post.id}><Post {...post} /></li>)}
-      </ul>
+      <div>
+        <ul>
+          { posts && posts.map( post =>
+            <li key={post.id}><Post {...post} /></li>)}
+        </ul>
+        <PostForm category={category}/>
+      </div>
     )
   }
 }

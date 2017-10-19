@@ -31,16 +31,14 @@ export const getPost = (id) => {
 }
 
 export const createPost = (post) => {
-  console.log({
-    headers: { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' },
-    method: "POST", body: {
-      ...post }
-    })
   return fetch(`${ROUTES.posts}`, {
-    headers: { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' },
-    method: "POST", body: {
-      ...post }
-    });
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+      'Content-Type': 'application/json'},
+    method: "POST",
+    body: JSON.stringify({
+      ...post })
+    }).then ( res => res.json() );
 }
 
 const ROUTES = {

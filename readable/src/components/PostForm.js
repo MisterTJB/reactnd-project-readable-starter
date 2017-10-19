@@ -8,13 +8,16 @@ class PostForm extends Component {
 
   state = {
     postTitle: '',
-    postBody: ''
+    postBody: '',
+    postAuthor: '',
+    postCategory: this.props.category
   }
 
   resetForm = _ => {
     this.setState({
       postTitle: '',
-      postBody: ''
+      postBody: '',
+      postAuthor: ''
     });
   }
 
@@ -25,19 +28,24 @@ class PostForm extends Component {
       author,
       category,
       id: uuidv4(),
-      timestamp: Date.now(),
-      voteScore: 0,
-      deleted: false
+      timestamp: Date.now()
     }
   }
+
+  // The categories will passed from Redux after
+  // the state is initially set
+  componentWillReceiveProps(newProps){
+    this.setState({
+      postCategory: newProps.categories[0].name
+    });
+  }
+
 
   onChange = (event) => {
 
     const target = event.target;
     const name = target.name;
     const value = target.value
-
-    console.log(event)
 
     this.setState({
       [name]: value
@@ -52,11 +60,12 @@ class PostForm extends Component {
     let newPost = this.createPost({
       title: this.state.postTitle,
       body: this.state.postBody,
-      author: "AUTHOR-TODO",
-      category: "CATEGORY-TODO"
+      author: this.state.postAuthor,
+      category: this.state.postCategory
     })
 
-    createPost(newPost).then( _ => addPost(newPost))
+    createPost(newPost)
+      .then( post => addPost(post))
 
     this.resetForm();
   }
@@ -69,6 +78,21 @@ class PostForm extends Component {
           <label htmlFor="title">Title</label>
           <input id="title" name="postTitle" placeholder="Title for the post" onChange={this.onChange} value={this.state.postTitle} />
 
+          <label htmlFor="author">Author</label>
+          <input id="author" name="postAuthor" placeholder="Your Name" onChange={this.onChange} value={this.state.postAuthor} />
+
+          { !this.props.category &&
+            <label htmlFor="category">Category
+            <select id="category" name="postCategory" value="" onChange={this.onChange}>
+              {
+                this.props.categories.map( category => {
+                  return <option key={category.path} value={category.name}>{category.name}</option>
+                })
+              }
+            </select>
+            </label>
+          }
+
           <label htmlFor="body">Post</label>
           <textarea id="body" name="postBody" rows="5" value={this.state.postBody} onChange={this.onChange} />
           <input type="submit" value="Submit"/>
@@ -80,7 +104,7 @@ class PostForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // Nothing to return yet
+    categories: state.categories
   }
 }
 

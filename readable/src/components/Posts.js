@@ -22,8 +22,8 @@ class Posts extends Component {
 
     return (
       <ul>
-        { posts && posts.map( post =>
-          <li key={post.id}><Post {...post} /></li>)}
+        { posts && posts.map( (post, index) =>
+          <li key={index}><Post {...post} /></li>)}
       </ul>
     )
   }
