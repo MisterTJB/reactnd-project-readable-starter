@@ -6,6 +6,7 @@ import reducers from '../reducers'
 
 import Home from './Home';
 import PostDetail from './PostDetail';
+import CategoryView from './CategoryView';
 
 const store = createStore(
   reducers,
@@ -19,7 +20,8 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path="/" component={Home} />
-            <Route exact path="/posts/:id" component={PostDetail} />
+            <Route exact path="/:category/:id" component={PostDetail} />
+            <Route exact path="/:category" component={CategoryView} />
           </div>
         </BrowserRouter>
       </Provider>

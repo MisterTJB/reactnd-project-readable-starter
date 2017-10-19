@@ -12,6 +12,12 @@ export const getPosts = _ => {
     .then( res => res.json() )
 }
 
+export const getPostsByCategory = (category) => {
+  return fetch(`${SERVER_ROOT}/${category}/posts`, { headers:
+    { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' } })
+    .then( res => res.json() )
+}
+
 export const getComments = (id) => {
   return fetch(`${ROUTES.posts}/${id}/comments`, { headers:
     { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' } })

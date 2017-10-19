@@ -7,7 +7,7 @@ import React from 'react';
 // implement comment form however you want (inline, modal, etc.)
 // comments should also have controls for editing or deleting
 export default function Post(props){
-  let { id, title } = props;
+  let { id, title, category } = props;
 
-  return <a href={ `posts/${id}` }>{title}</a>
+  return <a href={ `${category}/${id}` }>{title}</a>
 }
