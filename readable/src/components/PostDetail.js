@@ -31,7 +31,7 @@ class PostDetail extends Component {
       return <h1>Loading</h1>
     } else {
       let { title, author, timestamp, voteScore, body } = this.props.post
-
+      console.log(this.props.comments)
       return (
         <div>
           <h1>{title}</h1>
@@ -39,7 +39,7 @@ class PostDetail extends Component {
           <span>{ moment(Number(timestamp)).fromNow() }</span>
           <span>{voteScore}</span>
           { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
-          { this.props.comments.map( comment => { <Comment {...comment} /> } ) }
+          { this.props.comments.map( comment => { return <Comment {...comment} /> } ) }
         </div>
       )
     }
