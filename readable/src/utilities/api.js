@@ -30,6 +30,19 @@ export const getPost = (id) => {
     .then( res => res.json() )
 }
 
+export const createPost = (post) => {
+  console.log({
+    headers: { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' },
+    method: "POST", body: {
+      ...post }
+    })
+  return fetch(`${ROUTES.posts}`, {
+    headers: { 'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine' },
+    method: "POST", body: {
+      ...post }
+    });
+}
+
 const ROUTES = {
   categories: `${SERVER_ROOT}/categories`,
   posts: `${SERVER_ROOT}/posts`,

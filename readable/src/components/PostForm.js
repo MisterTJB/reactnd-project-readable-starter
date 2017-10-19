@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addPost } from '../actions'
+import uuidv4 from 'uuid/v4'
+import { createPost } from '../utilities/api';
 
 class PostForm extends Component {
 
   state = {
     postTitle: '',
     postBody: ''
+  }
+
+  resetForm = _ => {
+    this.setState({
+      postTitle: '',
+      postBody: ''
+    });
+  }
+
+  createPost = ( { title, body, author, category } ) => {
+    return {
+      title,
+      body,
+      author,
+      category,
+      id: uuidv4(),
+      timestamp: Date.now(),
+      voteScore: 0,
+      deleted: false
+    }
   }
 
   onChange = (event) => {
@@ -27,19 +49,16 @@ class PostForm extends Component {
     event.preventDefault();
 
     let { addPost } = this.props;
-
-    addPost({
-     id: 'slkgnsdgnls;gnlsdgnsgk',
-     timestamp: 1468479767190,
-     title: 'I put this here just now',
-     body: 'You are stupid',
-     author: 'test',
-     category: 'udacity',
-     voteScore: -5,
-     deleted: false,
-     commentCount: 0
+    let newPost = this.createPost({
+      title: this.state.postTitle,
+      body: this.state.postBody,
+      author: "AUTHOR-TODO",
+      category: "CATEGORY-TODO"
     })
 
+    createPost(newPost).then( _ => addPost(newPost))
+
+    this.resetForm();
   }
 
   render() {
