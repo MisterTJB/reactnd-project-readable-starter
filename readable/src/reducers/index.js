@@ -7,7 +7,9 @@ import {
     EDIT_POST,
     ADD_COMMENTS,
     UPVOTE_POST,
-    DOWNVOTE_POST } from '../actions';
+    DOWNVOTE_POST,
+    UPVOTE_COMMENT,
+    DOWNVOTE_COMMENT } from '../actions';
 
 const initialState = {
     posts: [],
@@ -62,6 +64,14 @@ const comments = (state = [], action) => {
       return [...state.filter( comment => comment.parentId !== action.postId), ...action.comments]
     case DELETE_POST:
       return state.map(comment => comment.parentId === action.id ? { ...comment, parentDeleted: true } : comment)
+    case UPVOTE_COMMENT:
+      return state.map( comment => {
+        return comment.id === action.id ? { ...comment, voteScore: comment.voteScore + 1} : comment
+      })
+    case DOWNVOTE_COMMENT:
+    return state.map( comment => {
+      return comment.id === action.id ? { ...comment, voteScore: comment.voteScore - 1} : comment
+    })
     default:
       return state
   }

@@ -62,7 +62,6 @@ export const deletePost = (postId) => {
 }
 
 const updateVote = (postId, option) => {
-  console.log(postId);
   return fetch(`${ROUTES.posts}/${postId}`, {
     headers: {
       'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
@@ -78,6 +77,25 @@ export const incrementVote = (postId) => {
 
 export const decrementVote = (postId) => {
   return updateVote(postId, 'downVote');
+}
+
+const updateCommentVote = (commentId, option) => {
+
+  return fetch(`${ROUTES.comments}/${commentId}`, {
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+      'Content-Type': 'application/json'},
+    method: "POST",
+    body: JSON.stringify({ option })
+    }).then ( res => res.json() );
+}
+
+export const incrementCommentVote = (commentId) => {
+  return updateCommentVote(commentId, 'upVote');
+}
+
+export const decrementCommentVote = (commentId) => {
+  return updateCommentVote(commentId, 'downVote');
 }
 
 const ROUTES = {

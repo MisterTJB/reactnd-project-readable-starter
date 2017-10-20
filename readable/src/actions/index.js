@@ -6,6 +6,8 @@ export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const UPVOTE_POST = 'UPVOTE_POST';
 export const DOWNVOTE_POST = 'DOWNVOTE_POST';
 export const DELETE_POST = 'DELETE_POST';
+export const UPVOTE_COMMENT = 'UPVOTE_COMMENT';
+export const DOWNVOTE_COMMENT = 'DOWNVOTE_COMMENT';
 
 export function addCategories(categories){
   return {
@@ -62,6 +64,20 @@ export function upvotePost(postId){
 export function downvotePost(postId){
   return {
     type: DOWNVOTE_POST,
+    id: postId
+  }
+}
+
+export function upvoteComment(postId){
+  return {
+    type: UPVOTE_COMMENT,
+    id: postId
+  }
+}
+
+export function downvoteComment(postId){
+  return {
+    type: DOWNVOTE_COMMENT,
     id: postId
   }
 }

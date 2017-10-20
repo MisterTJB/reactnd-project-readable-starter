@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addPost, addComments, removePost, editPost } from '../actions'
-import { getPost, getComments, deletePost, updatePost } from '../utilities/api';
+import { addPost, addComments, removePost } from '../actions'
+import { getPost, getComments, deletePost } from '../utilities/api';
 import moment from 'moment';
 import Comment from './Comment';
 import VoteControl from './VoteControl';
@@ -84,7 +84,7 @@ class PostDetail extends Component {
         <span>{voteScore}</span>
         <button onClick={this.enableEditing}>Edit</button>
         <button onClick={this.deleteCurrentPost}>Delete</button>
-        <VoteControl postId={id}/>
+        <VoteControl id={id}/>
         { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
         { this.props.comments.map( comment => { return <Comment key={comment.id} {...comment} /> } ) }
       </div>

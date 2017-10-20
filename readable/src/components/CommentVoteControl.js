@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { upvotePost, downvotePost } from '../actions';
-import { incrementVote as apiIncrement, decrementVote as apiDecrement } from '../utilities/api';
+import { upvoteComment, downvoteComment } from '../actions';
+import { incrementCommentVote as apiIncrement, decrementCommentVote as apiDecrement } from '../utilities/api';
 
-
-class VoteControl extends Component {
+class CommentVoteControl extends Component {
 
   incrementVote = _ => {
     let { upvote, id } = this.props;
@@ -34,9 +33,9 @@ class VoteControl extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    upvote: d => dispatch(upvotePost(d)),
-    downvote: d => dispatch(downvotePost(d))
+    upvote: d => dispatch(upvoteComment(d)),
+    downvote: d => dispatch(downvoteComment(d))
   }
 }
 
-export default connect(_ => ({}), mapDispatchToProps)(VoteControl)
+export default connect(_ => ({}), mapDispatchToProps)(CommentVoteControl)
