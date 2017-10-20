@@ -1,6 +1,7 @@
 export const ADD_CATEGORIES = 'ADD_CATEGORIES';
 export const ADD_POSTS = 'ADD_POSTS';
 export const ADD_POST = 'ADD_POST';
+export const EDIT_POST = 'EDIT_POST';
 export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const UPVOTE_POST = 'UPVOTE_POST';
 export const DOWNVOTE_POST = 'DOWNVOTE_POST';
@@ -24,6 +25,15 @@ export function addPost(post){
   return {
     type: ADD_POST,
     post
+    }
+}
+
+export function editPost(postId, post){
+  console.log(post)
+  return {
+    type: EDIT_POST,
+    post,
+    id: postId
     }
 }
 

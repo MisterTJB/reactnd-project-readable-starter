@@ -4,6 +4,7 @@ import {
     ADD_POSTS,
     DELETE_POST,
     ADD_POST,
+    EDIT_POST,
     ADD_COMMENTS,
     UPVOTE_POST,
     DOWNVOTE_POST } from '../actions';
@@ -35,6 +36,11 @@ const posts = (state = [], action ) => {
       return action.posts
     case ADD_POST:
       return [...state.filter( post => post.id !== action.post.id), action.post]
+    case EDIT_POST:
+      return state.map( post => post.id === action.id
+                                ?
+                                { ...post, title: action.post.title, body: action.post.body }
+                                : post )
     case DELETE_POST:
       return state.map(post => post.id === action.id ? { ...post, deleted: true } : post)
     case UPVOTE_POST:

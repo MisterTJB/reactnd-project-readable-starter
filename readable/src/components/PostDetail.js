@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addPost, addComments, removePost } from '../actions'
-import { getPost, getComments, deletePost } from '../utilities/api';
+import { addPost, addComments, removePost, editPost } from '../actions'
+import { getPost, getComments, deletePost, updatePost } from '../utilities/api';
 import moment from 'moment';
 import Comment from './Comment';
 import VoteControl from './VoteControl';
+import EditForm from './EditForm';
 
 class PostDetail extends Component {
 
@@ -50,6 +51,10 @@ class PostDetail extends Component {
     })
   }
 
+  finishedEditing = (editedPost) => {
+    this.setState({ isEditing: false });
+  }
+
   render(){
 
     if (this.state.didDelete) {
@@ -61,8 +66,12 @@ class PostDetail extends Component {
     }
 
     if (this.state.isEditing){
+      let { title, body } = this.props.post;
       return (
-        <h1>YOU ARE EDITING THIS POST</h1>
+        <EditForm postTitle={title}
+                  postBody={body}
+                  postId={this.props.post.id}
+                  finishedEditing={this.finishedEditing}/>
       )
     }
 

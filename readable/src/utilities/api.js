@@ -41,6 +41,17 @@ export const createPost = (post) => {
     }).then ( res => res.json() );
 }
 
+export const updatePost = (postId, post) => {
+  return fetch(`${ROUTES.posts}/${postId}`, {
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+      'Content-Type': 'application/json'},
+    method: "PUT",
+    body: JSON.stringify({
+      ...post })
+    }).then ( res => res.json() );
+}
+
 export const deletePost = (postId) => {
   return fetch(`${ROUTES.posts}/${postId}`, {
     headers: {
@@ -51,6 +62,7 @@ export const deletePost = (postId) => {
 }
 
 const updateVote = (postId, option) => {
+  console.log(postId);
   return fetch(`${ROUTES.posts}/${postId}`, {
     headers: {
       'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
