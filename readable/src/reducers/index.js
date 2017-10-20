@@ -62,16 +62,17 @@ const comments = (state = [], action) => {
   switch (action.type){
     case ADD_COMMENTS:
       return [...state.filter( comment => comment.parentId !== action.postId), ...action.comments]
+                      .sort( (a, b) => a.voteScore < b.voteScore)
     case DELETE_POST:
       return state.map(comment => comment.parentId === action.id ? { ...comment, parentDeleted: true } : comment)
     case UPVOTE_COMMENT:
       return state.map( comment => {
         return comment.id === action.id ? { ...comment, voteScore: comment.voteScore + 1} : comment
-      })
+      }).sort( (a, b) => a.voteScore < b.voteScore)
     case DOWNVOTE_COMMENT:
     return state.map( comment => {
       return comment.id === action.id ? { ...comment, voteScore: comment.voteScore - 1} : comment
-    })
+    }).sort( (a, b) => a.voteScore < b.voteScore)
     default:
       return state
   }
