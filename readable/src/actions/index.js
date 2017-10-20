@@ -4,6 +4,7 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const UPVOTE_POST = 'UPVOTE_POST';
 export const DOWNVOTE_POST = 'DOWNVOTE_POST';
+export const DELETE_POST = 'DELETE_POST';
 
 export function addCategories(categories){
   return {
@@ -23,6 +24,13 @@ export function addPost(post){
   return {
     type: ADD_POST,
     post
+    }
+}
+
+export function removePost(postId){
+  return {
+    type: DELETE_POST,
+    id: postId
     }
 }
 
