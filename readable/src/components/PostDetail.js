@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { addPost, addComments } from '../actions'
 import { getPost, getComments } from '../utilities/api';
 import moment from 'moment';
-import Comment from './Comment'
+import Comment from './Comment';
+import VoteControl from './VoteControl';
 
 class PostDetail extends Component {
 
@@ -30,16 +31,16 @@ class PostDetail extends Component {
     if (!this.props.post || !this.props.comments){
       return <h1>Loading</h1>
     } else {
-      let { title, author, timestamp, voteScore, body } = this.props.post
-      console.log(this.props.comments)
+      let { title, author, timestamp, voteScore, body, id } = this.props.post
       return (
         <div>
           <h1>{title}</h1>
           <h2>By {author}</h2>
           <span>{ moment(Number(timestamp)).fromNow() }</span>
           <span>{voteScore}</span>
+          <VoteControl postId={id}/>
           { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
-          { this.props.comments.map( comment => { return <Comment {...comment} /> } ) }
+          { this.props.comments.map( comment => { return <Comment key={comment.id} {...comment} /> } ) }
         </div>
       )
     }

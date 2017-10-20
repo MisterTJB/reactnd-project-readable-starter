@@ -2,6 +2,8 @@ export const ADD_CATEGORIES = 'ADD_CATEGORIES';
 export const ADD_POSTS = 'ADD_POSTS';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENTS = 'ADD_COMMENTS';
+export const UPVOTE_POST = 'UPVOTE_POST';
+export const DOWNVOTE_POST = 'DOWNVOTE_POST';
 
 export function addCategories(categories){
   return {
@@ -28,6 +30,20 @@ export function addComments(comments, postId){
   return {
     type: ADD_COMMENTS,
     comments,
+    id: postId
+  }
+}
+
+export function upvotePost(postId){
+  return {
+    type: UPVOTE_POST,
+    id: postId
+  }
+}
+
+export function downvotePost(postId){
+  return {
+    type: DOWNVOTE_POST,
     id: postId
   }
 }

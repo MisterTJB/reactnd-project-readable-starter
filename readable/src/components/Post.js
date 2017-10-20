@@ -1,4 +1,5 @@
 import React from 'react';
+import VoteControl from './VoteControl';
 
 // should show the details of a post, including: Title, Body, Author, timestamp (in user readable format), and vote score
 // should list all of the comments for that post, ordered by voteScore (highest first)
@@ -9,5 +10,8 @@ import React from 'react';
 export default function Post(props){
   let { id, title, category } = props;
 
-  return <a href={ `${category}/${id}` }>{title}</a>
+  return ( <div>
+    <a href={ `${category}/${id}` }>{title}</a>
+    <VoteControl postId={id}/>
+    </div> )
 }

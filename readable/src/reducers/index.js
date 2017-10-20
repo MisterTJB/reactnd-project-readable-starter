@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_CATEGORIES, ADD_POSTS, ADD_POST, ADD_COMMENTS } from '../actions';
+import { ADD_CATEGORIES, ADD_POSTS, ADD_POST, ADD_COMMENTS, UPVOTE_POST, DOWNVOTE_POST } from '../actions';
 
 const initialState = {
     posts: [],
@@ -28,6 +28,14 @@ const posts = (state = [], action ) => {
       return action.posts
     case ADD_POST:
       return [...state.filter( post => post.id !== action.post.id), action.post]
+    case UPVOTE_POST:
+      return state.map( post => {
+        return post.id === action.id ? { ...post, voteScore: post.voteScore + 1} : post
+      })
+    case DOWNVOTE_POST:
+      return state.map( post => {
+        return post.id === action.id ? { ...post, voteScore: post.voteScore - 1} : post
+      })
     default:
       return state;
   }
