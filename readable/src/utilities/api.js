@@ -99,6 +99,14 @@ export const updateComment = (commentId, comment) => {
     }).then ( res => res.json() );
 }
 
+export const deleteComment = (commentId) => {
+  return fetch(`${ROUTES.comments}/${commentId}`, {
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+    },
+    method: "DELETE"
+    }).then ( res => res.json() );
+}
 
 const updateCommentVote = (commentId, option) => {
 
