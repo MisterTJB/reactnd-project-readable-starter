@@ -65,7 +65,7 @@ class PostForm extends Component {
     })
 
     createPost(newPost)
-      .then( post => addPost(post))
+      .then( post => addPost(post) )
 
     this.resetForm();
   }

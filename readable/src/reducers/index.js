@@ -11,13 +11,6 @@ import {
     UPVOTE_COMMENT,
     DOWNVOTE_COMMENT } from '../actions';
 
-const initialState = {
-    posts: [],
-    categories: [],
-    comments: []
-}
-
-
 const categories = ( state = [], action ) => {
 
   let { categories } = action
