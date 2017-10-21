@@ -51,6 +51,12 @@ const posts = (state = [], action ) => {
       return state.map( post => {
         return post.id === action.id ? { ...post, voteScore: post.voteScore - 1} : post
       })
+    case ADD_COMMENT:
+      return state.map( post => post.id === action.comment.parentId ?
+        { ...post, commentCount: post.commentCount + 1 } : post)
+    case REMOVE_COMMENT:
+      return state.map( post => post.id === action.comment.parentId ?
+        { ...post, commentCount: post.commentCount - 1 } : post)
     default:
       return state;
   }
@@ -70,7 +76,7 @@ const comments = (state = [], action) => {
                                 : comment)
                                 .sort( (a, b) => a.voteScore < b.voteScore)
     case REMOVE_COMMENT:
-      return state.filter(comment => comment.id !== action.id).sort( (a, b) => a.voteScore < b.voteScore)
+      return state.filter(comment => comment.id !== action.comment.id).sort( (a, b) => a.voteScore < b.voteScore)
     case DELETE_POST:
       return state.map(comment => comment.parentId === action.id ? { ...comment, parentDeleted: true } : comment)
     case UPVOTE_COMMENT:

@@ -79,10 +79,10 @@ export function editComment(comment){
   }
 }
 
-export function removeComment(id){
+export function removeComment(comment){
   return {
     type: REMOVE_COMMENT,
-    id
+    comment
   }
 }
 

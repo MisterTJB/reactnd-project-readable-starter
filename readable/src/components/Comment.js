@@ -22,16 +22,16 @@ class Comment extends Component {
 
   deleteComment = _ => {
 
-    let { id, removeComment } = this.props;
-    deleteComment(id).then( _ => {
-      removeComment(id);
+    let { removeComment, comment } = this.props;
+    deleteComment(comment.id).then( _ => {
+      removeComment(comment);
     })
   }
 
   render() {
 
     let { author, voteScore, timestamp, id, body } = this.props.comment;
-    
+
     return (
       <div>
         <h1>{author}</h1>

@@ -79,14 +79,16 @@ class PostDetail extends Component {
       )
     }
 
-    let { title, author, timestamp, voteScore, body, id, category } = this.props.post
+    let { title, author, timestamp, voteScore, body, id, category, commentCount} = this.props.post
+
     return (
       <div>
         <a href={`/${category}`}>Back</a>
         <h1>{title}</h1>
         <h2>By {author}</h2>
         <span>{ moment(Number(timestamp)).fromNow() }</span>
-        <span>{voteScore}</span>
+        <span>{voteScore} votes</span>
+        <span>{commentCount} comments</span>
         <button onClick={this.enableEditing}>Edit</button>
         <button onClick={this.deleteCurrentPost}>Delete</button>
         <VoteControl postId={id}/>
