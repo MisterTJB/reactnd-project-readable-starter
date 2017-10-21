@@ -44,7 +44,6 @@ class EditForm extends Component {
 
     return (
       <div>
-        <h1>Edit Post</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title</label>
           <input  id="title"

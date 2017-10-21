@@ -69,10 +69,13 @@ class PostDetail extends Component {
     if (this.state.isEditing){
       let { title, body } = this.props.post;
       return (
-        <EditForm postTitle={title}
-                  postBody={body}
-                  postId={this.props.post.id}
-                  finishedEditing={this.finishedEditing}/>
+        <div>
+          <h1>Edit Post</h1>
+          <EditForm postTitle={title}
+                    postBody={body}
+                    postId={this.props.post.id}
+                    finishedEditing={this.finishedEditing}/>
+        </div>
       )
     }
 

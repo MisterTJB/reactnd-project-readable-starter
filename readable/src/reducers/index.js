@@ -42,6 +42,7 @@ const posts = (state = [], action ) => {
                                 : post )
     case DELETE_POST:
       return state.map(post => post.id === action.id ? { ...post, deleted: true } : post)
+                  .filter( post => !post.deleted)
     case UPVOTE_POST:
       return state.map( post => {
         return post.id === action.id ? { ...post, voteScore: post.voteScore + 1} : post
