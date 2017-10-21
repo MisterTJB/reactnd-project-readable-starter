@@ -31,13 +31,15 @@ class Post extends Component {
   }
 
   render() {
-    let { id, title, category, voteScore, timestamp, body } = this.props;
+    let { id, title, author, commentCount, category, voteScore, timestamp, body } = this.props;
       return (
 
         !this.state.isEditing ?
           <div>
             <a href={ `/${category}/${id}` }>{title}</a>
+            <span>By {author}</span>
             <span>{moment(Number(timestamp)).fromNow()}</span>
+            <span>{commentCount} comments</span>
             <span>{voteScore} votes</span>
             <VoteControl postId={id}/>
             <button onClick={this.enableEditing}>Edit</button>
