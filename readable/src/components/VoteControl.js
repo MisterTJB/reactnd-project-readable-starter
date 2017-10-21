@@ -7,18 +7,18 @@ import { incrementVote as apiIncrement, decrementVote as apiDecrement } from '..
 class VoteControl extends Component {
 
   incrementVote = _ => {
-    let { upvote, id } = this.props;
+    let { upvote, postId } = this.props;
 
-    apiIncrement(id).then( _ => {
-      upvote(id)
+    apiIncrement(postId).then( _ => {
+      upvote(postId)
     })
 
   }
 
   decrementVote = _ => {
-    let { downvote, id } = this.props;
-    apiDecrement(id).then( _ => {
-      downvote(id)
+    let { downvote, postId } = this.props;
+    apiDecrement(postId).then( _ => {
+      downvote(postId)
     })
   }
 

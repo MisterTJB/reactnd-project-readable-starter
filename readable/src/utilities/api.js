@@ -80,7 +80,6 @@ export const decrementVote = (postId) => {
 }
 
 export const createComment = (comment) => {
-  console.log(comment);
   return fetch(`${ROUTES.comments}`, {
     headers: {
       'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
@@ -89,6 +88,17 @@ export const createComment = (comment) => {
     body: JSON.stringify(comment)
     }).then ( res => res.json() );
 }
+
+export const updateComment = (commentId, comment) => {
+  return fetch(`${ROUTES.comments}/${commentId}`, {
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+      'Content-Type': 'application/json'},
+    method: "PUT",
+    body: JSON.stringify(comment)
+    }).then ( res => res.json() );
+}
+
 
 const updateCommentVote = (commentId, option) => {
 

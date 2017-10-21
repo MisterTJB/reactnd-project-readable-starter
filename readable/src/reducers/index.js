@@ -7,6 +7,7 @@ import {
     EDIT_POST,
     ADD_COMMENTS,
     ADD_COMMENT,
+    EDIT_COMMENT,
     UPVOTE_POST,
     DOWNVOTE_POST,
     UPVOTE_COMMENT,
@@ -60,6 +61,11 @@ const comments = (state = [], action) => {
     case ADD_COMMENT:
       return [...state.filter( comment => comment.parentId !== action.postId), action.comment]
                     .sort( (a, b) => a.voteScore < b.voteScore)
+    case EDIT_COMMENT:
+      return state.map(comment => comment.id === action.comment.id
+                                ? action.comment
+                                : comment)
+                                .sort( (a, b) => a.voteScore < b.voteScore)
     case DELETE_POST:
       return state.map(comment => comment.parentId === action.id ? { ...comment, parentDeleted: true } : comment)
     case UPVOTE_COMMENT:
