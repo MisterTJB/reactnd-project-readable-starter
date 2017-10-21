@@ -36,10 +36,9 @@ class PostForm extends Component {
   // the state is initially set
   componentWillReceiveProps(newProps){
     this.setState({
-      postCategory: newProps.categories[0].name
+      postCategory: this.props.category ? this.props.category : newProps.categories[0].name
     });
   }
-
 
   onChange = (event) => {
 
@@ -71,30 +70,48 @@ class PostForm extends Component {
   }
 
   render() {
+    console.log(this.state.postCategory)
     return (
       <div>
+
+
         <h1>New Post</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title</label>
-          <input id="title" name="postTitle" placeholder="Title for the post" onChange={this.onChange} value={this.state.postTitle} />
+          <input  id="title"
+                  name="postTitle"
+                  placeholder="Title for the post"
+                  onChange={this.onChange}
+                  value={this.state.postTitle} />
 
           <label htmlFor="author">Author</label>
-          <input id="author" name="postAuthor" placeholder="Your Name" onChange={this.onChange} value={this.state.postAuthor} />
+          <input  id="author"
+                  name="postAuthor"
+                  placeholder="Your Name"
+                  onChange={this.onChange}
+                  value={this.state.postAuthor} />
 
           { !this.props.category &&
+
             <label htmlFor="category">Category
-            <select id="category" name="postCategory" value="" onChange={this.onChange}>
-              {
-                this.props.categories.map( category => {
-                  return <option key={category.path} value={category.name}>{category.name}</option>
-                })
-              }
-            </select>
+              <select id="category" name="postCategory" value={this.props.postCategory} onChange={this.onChange}>
+                {
+                  this.props.categories.map( category => {
+                    return <option  key={category.path}
+                                    value={category.name}>{category.name}
+                           </option> })
+                }
+              </select>
             </label>
           }
 
           <label htmlFor="body">Post</label>
-          <textarea id="body" name="postBody" rows="5" value={this.state.postBody} onChange={this.onChange} />
+          <textarea id="body"
+                    name="postBody"
+                    rows="5"
+                    value={this.state.postBody}
+                    onChange={this.onChange} />
+
           <input type="submit" value="Submit"/>
         </form>
       </div>

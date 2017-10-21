@@ -38,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(_ => ({}), mapDispatchToProps)(CommentVoteControl)
+export default connect(undefined, mapDispatchToProps)(CommentVoteControl)

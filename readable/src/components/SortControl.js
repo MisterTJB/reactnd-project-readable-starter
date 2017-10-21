@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(_ => ({}), mapDispatchToProps)(SortControl);
+export default connect(undefined, mapDispatchToProps)(SortControl);

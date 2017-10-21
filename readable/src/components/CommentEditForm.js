@@ -35,12 +35,23 @@ class CommentEditForm extends Component {
 
   }
 
+  handleCancel = event => {
+    event.preventDefault()
+    this.props.finishedEditing();
+  }
+
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <textarea rows="5" id="body" name="body" placeholder="What do you think?" onChange={this.onChange} value={this.state.body} />
+          <textarea rows="5"
+                    id="body"
+                    name="body"
+                    placeholder="What do you think?"
+                    onChange={this.onChange}
+                    value={this.state.body} />
           <input type="submit" value="Save"/>
+          <button onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
     )
@@ -53,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect( _ => ({}), mapDispatchToProps)(CommentEditForm)
+export default connect(undefined, mapDispatchToProps)(CommentEditForm)

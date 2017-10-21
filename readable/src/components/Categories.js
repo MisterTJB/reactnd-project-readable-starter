@@ -19,11 +19,18 @@ class Categories extends Component {
 
   render(){
 
-    let categories = this.props.categories;
+    let { categories } = this.props;
+
     return (
       <ul>
-        { categories && categories.map( category =>
-          <li key={category.path}><Category name={category.name} path={category.path} /></li>)}
+          <li key="all">
+            <a href="/">all</a>
+          </li>
+          { categories && categories.map( category =>
+            <li key={category.path}>
+              <Category name={category.name} path={category.path} />
+            </li> )
+          }
       </ul>
     )
   }

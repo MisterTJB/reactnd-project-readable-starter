@@ -57,10 +57,19 @@ class CommentForm extends Component {
         <h1>Add Comment</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="author">Author</label>
-          <input id="author" name="author" placeholder="Who are you?" onChange={this.onChange} value={this.state.author} />
+          <input  id="author"
+                  name="author"
+                  placeholder="Who are you?"
+                  onChange={this.onChange}
+                  value={this.state.author} />
 
           <label htmlFor="body">Comment</label>
-          <textarea rows="5" id="body" name="body" placeholder="What do you think?" onChange={this.onChange} value={this.state.body} />
+          <textarea rows="5"
+                    id="body"
+                    name="body"
+                    placeholder="What do you think?"
+                    onChange={this.onChange}
+                    value={this.state.body} />
 
           <input type="submit" value="Submit"/>
         </form>
@@ -75,4 +84,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect( _ => ({}), mapDispatchToProps)(CommentForm)
+export default connect(undefined, mapDispatchToProps)(CommentForm)

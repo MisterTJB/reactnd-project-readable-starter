@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { updatePost } from '../utilities/api';
 import { editPost } from '../actions';
 
-
 class EditForm extends Component {
 
   state = {
@@ -36,6 +35,11 @@ class EditForm extends Component {
       })
   }
 
+  handleCancel = event => {
+    event.preventDefault()
+    this.props.finishedEditing()
+  }
+
   render() {
 
     return (
@@ -43,11 +47,20 @@ class EditForm extends Component {
         <h1>Edit Post</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title</label>
-          <input id="title" name="postTitle" placeholder="Title for the post" onChange={this.onChange} value={this.state.postTitle} />
+          <input  id="title"
+                  name="postTitle"
+                  placeholder="Title for the post"
+                  onChange={this.onChange}
+                  value={this.state.postTitle} />
 
           <label htmlFor="body">Post</label>
-          <textarea id="body" name="postBody" rows="5" value={this.state.postBody} onChange={this.onChange} />
+          <textarea id="body"
+                    name="postBody"
+                    rows="5" value={this.state.postBody}
+                    onChange={this.onChange} />
+
           <input type="submit" value="Submit"/>
+          <button onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
     )
@@ -60,4 +73,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(_ => ({}), mapDispatchToProps)(EditForm);
+export default connect(undefined, mapDispatchToProps)(EditForm);

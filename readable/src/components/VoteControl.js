@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(_ => ({}), mapDispatchToProps)(VoteControl)
+export default connect(undefined, mapDispatchToProps)(VoteControl)

@@ -76,18 +76,19 @@ class PostDetail extends Component {
       )
     }
 
-    let { title, author, timestamp, voteScore, body, id } = this.props.post
+    let { title, author, timestamp, voteScore, body, id, category } = this.props.post
     return (
       <div>
+        <a href={`/${category}`}>Back</a>
         <h1>{title}</h1>
         <h2>By {author}</h2>
         <span>{ moment(Number(timestamp)).fromNow() }</span>
         <span>{voteScore}</span>
         <button onClick={this.enableEditing}>Edit</button>
         <button onClick={this.deleteCurrentPost}>Delete</button>
-        <VoteControl id={id}/>
+        <VoteControl postId={id}/>
         { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
-        { this.props.comments.map( comment => { return <Comment key={comment.id} {...comment} /> } ) }
+        { this.props.comments.map( comment => { return <Comment key={comment.id} id={comment.id} /> } ) }
         <CommentForm parentId={id}/>
       </div>
     )

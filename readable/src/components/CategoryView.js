@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { addPosts } from '../actions'
 import { getPostsByCategory } from '../utilities/api';
 
+import Categories from './Categories';
 import Post from './Post';
 import PostForm from './PostForm';
+import SortControl from './SortControl';
 
 class CategoryView extends Component {
 
@@ -21,13 +23,15 @@ class CategoryView extends Component {
 
   render(){
 
-    let { posts } = this.props;
+    let { posts, sortBy } = this.props;
     let { category } = this.props.match.params;
 
     return (
       <div>
+        <Categories />
+        <SortControl />
         <ul>
-          { posts && posts.map( post =>
+          { posts && posts.sort(sortBy).map( post =>
             <li key={post.id}><Post {...post} /></li>)}
         </ul>
         <PostForm category={category}/>
@@ -37,8 +41,24 @@ class CategoryView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+
+  let sortFn;
+  switch (state.sorting){
+    case "OLDEST":
+      sortFn = (a, b) => { return a.timestamp > b.timestamp }
+      break;
+    case "MOST_POPULAR":
+      sortFn = (a, b) => { return a.voteScore < b.voteScore }
+      break;
+    case "LEAST_POPULAR":
+      sortFn = (a, b) => { return a.voteScore > b.voteScore }
+      break;
+    default:
+      sortFn = (a, b) => { return a.timestamp < b.timestamp }
+  }
   return {
-    posts: state.posts.filter( post => post.category === ownProps.match.params.category)
+    posts: state.posts.filter( post => post.category === ownProps.match.params.category),
+    sortBy: sortFn
   }
 }
 
