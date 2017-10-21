@@ -5,6 +5,7 @@ import { addPost, addComments, removePost } from '../actions'
 import { getPost, getComments, deletePost } from '../utilities/api';
 import moment from 'moment';
 import Comment from './Comment';
+import CommentForm from './CommentForm';
 import VoteControl from './VoteControl';
 import EditForm from './EditForm';
 
@@ -87,6 +88,7 @@ class PostDetail extends Component {
         <VoteControl id={id}/>
         { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
         { this.props.comments.map( comment => { return <Comment key={comment.id} {...comment} /> } ) }
+        <CommentForm parentId={id}/>
       </div>
     )
   }

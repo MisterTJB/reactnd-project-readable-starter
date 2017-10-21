@@ -79,6 +79,17 @@ export const decrementVote = (postId) => {
   return updateVote(postId, 'downVote');
 }
 
+export const createComment = (comment) => {
+  console.log(comment);
+  return fetch(`${ROUTES.comments}`, {
+    headers: {
+      'Authorization': 'this-is-my-authorisation-header-there-are-many-like-it-but-this-is-mine',
+      'Content-Type': 'application/json'},
+    method: "POST",
+    body: JSON.stringify(comment)
+    }).then ( res => res.json() );
+}
+
 const updateCommentVote = (commentId, option) => {
 
   return fetch(`${ROUTES.comments}/${commentId}`, {
