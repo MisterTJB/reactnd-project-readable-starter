@@ -12,7 +12,8 @@ import {
     UPVOTE_POST,
     DOWNVOTE_POST,
     UPVOTE_COMMENT,
-    DOWNVOTE_COMMENT } from '../actions';
+    DOWNVOTE_COMMENT,
+    CHANGE_SORTING } from '../actions';
 
 const categories = ( state = [], action ) => {
 
@@ -84,4 +85,14 @@ const comments = (state = [], action) => {
   }
 }
 
-export default combineReducers({ categories, posts, comments })
+const sorting = ( state = "NEWEST", action) => {
+
+  switch (action.type) {
+    case CHANGE_SORTING:
+      return action.parameter
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ sorting, categories, posts, comments })

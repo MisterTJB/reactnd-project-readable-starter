@@ -4,6 +4,7 @@ import { addPosts } from '../actions'
 import { getPosts } from '../utilities/api';
 
 import Post from './Post';
+import SortControl from './SortControl';
 
 class Posts extends Component {
 
@@ -18,20 +19,41 @@ class Posts extends Component {
 
   render(){
 
-    let { posts } = this.props;
+    let { posts, sortBy } = this.props;
 
     return (
-      <ul>
-        { posts && posts.map( (post, index) =>
-          <li key={index}><Post {...post} /></li>)}
-      </ul>
+      <div>
+        <SortControl />
+        <ul>
+          { posts && posts
+              .sort(sortBy)
+              .map( (post, index) => <li key={index}><Post {...post} /></li>)
+          }
+        </ul>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
+
+  let sortFn;
+  switch (state.sorting){
+    case "OLDEST":
+      sortFn = (a, b) => { return a.timestamp > b.timestamp }
+      break;
+    case "MOST_POPULAR":
+      sortFn = (a, b) => { return a.voteScore < b.voteScore }
+      break;
+    case "LEAST_POPULAR":
+      sortFn = (a, b) => { return a.voteScore > b.voteScore }
+      break;
+    default:
+      sortFn = (a, b) => { return a.timestamp < b.timestamp }
+  }
   return {
-    posts: state.posts
+    posts: state.posts,
+    sortBy: sortFn
   }
 }
 

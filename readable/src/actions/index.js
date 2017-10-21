@@ -11,6 +11,14 @@ export const DOWNVOTE_POST = 'DOWNVOTE_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const UPVOTE_COMMENT = 'UPVOTE_COMMENT';
 export const DOWNVOTE_COMMENT = 'DOWNVOTE_COMMENT';
+export const CHANGE_SORTING = 'CHANGE_SORTING';
+
+export function changeSorting(parameter){
+  return {
+    type: CHANGE_SORTING,
+    parameter
+  }
+}
 
 export function addCategories(categories){
   return {
