@@ -1,0 +1,31 @@
+#root {
+    max-width: 800px;
+    margin: 0 auto 0 auto;
+}
+
+.categories__component {
+
+}
+
+.categories__list-container {
+    display: flex;
+}
+
+.category__list-element:first-of-type {
+    margin-left: 0;
+}
+
+.category__list-element {
+    margin: 1em;
+    display: block;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.posts__component {
+    
+}
+
+.post-form__component {
+    
+}

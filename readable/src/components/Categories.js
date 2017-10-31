@@ -22,12 +22,12 @@ class Categories extends Component {
     let { categories } = this.props;
 
     return (
-      <ul>
-          <li key="all">
+      <ul className="categories__list-container">
+          <li className="category__list-element" key="all">
             <a href="/">all</a>
           </li>
           { categories && categories.map( category =>
-            <li key={category.path}>
+            <li className="category__list-element" key={category.path}>
               <Category name={category.name} path={category.path} />
             </li> )
           }

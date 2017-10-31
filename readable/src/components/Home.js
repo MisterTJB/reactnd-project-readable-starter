@@ -7,9 +7,9 @@ class Home extends Component {
   render(){
     return (
       <main>
-        <Categories />
-        <Posts />
-        <PostForm />
+        <Categories className="categories__component" />
+        <Posts className="posts__component"/>
+        <PostForm className="post-form__component"/>
       </main>
     )
   }
