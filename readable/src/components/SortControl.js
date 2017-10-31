@@ -15,7 +15,7 @@ class SortControl extends Component {
 
   render(){
     return (
-      <select onChange={this.didChange}>
+      <select className="sort-control__select" onChange={this.didChange}>
         <option value="NEWEST">Newest</option>
         <option value="OLDEST">Oldest</option>
         <option value="MOST_POPULAR">Most Popular</option>

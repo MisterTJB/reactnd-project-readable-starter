@@ -22,12 +22,12 @@ class Posts extends Component {
     let { posts, sortBy } = this.props;
 
     return (
-      <div>
+      <div className="posts__component">
         <SortControl />
-        <ul>
+        <ul className="posts__list-container">
           { posts && posts
               .sort(sortBy)
-              .map( (post, index) => <li key={index}><Post {...post} /></li>)
+              .map( (post, index) => <li className="posts__list-item" key={index}><Post {...post} /></li>)
           }
         </ul>
       </div>

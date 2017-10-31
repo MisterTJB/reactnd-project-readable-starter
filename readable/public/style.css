@@ -9,6 +9,7 @@
 
 .categories__list-container {
     display: flex;
+    border-bottom: 1px solid grey;
 }
 
 .category__list-element:first-of-type {
@@ -22,10 +23,77 @@
     text-transform: uppercase;
 }
 
+.sort-control__select {
+    display: block;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
 .posts__component {
-    
+}
+
+.posts__list-container {
+
+}
+
+.posts__list-item {
+    list-style: none;
+    border-bottom: 1px solid black;
+    margin-top: 2em;
+}
+
+.posts__list-item:last-of-type {
+    border-bottom: none;
 }
 
 .post-form__component {
     
+}
+
+.post__container {
+    margin: 0 auto 0 auto;
+    padding: 1em;
+    font-size: 0.8em;
+}
+
+.post__title {
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.25em;
+}
+
+.post__author {
+}
+
+.post__author::after {
+    content: " ";
+    white-space: pre;
+}
+
+.post__time {
+}
+
+.post__comment-count {
+    display: block;
+}
+
+.post__score {
+}
+
+.post__edit-button {
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: none;
+    background-color: yellowgreen;
+    color: white;
+
+}
+
+.post__delete-button {
+    background: none;
+    background-color: red;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
 }

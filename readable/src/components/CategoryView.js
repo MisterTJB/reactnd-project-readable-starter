@@ -30,9 +30,9 @@ class CategoryView extends Component {
       <div>
         <Categories />
         <SortControl />
-        <ul>
+        <ul className="posts__container">
           { posts && posts.sort(sortBy).map( post =>
-            <li key={post.id}><Post {...post} /></li>)}
+            <li className="posts__list-item" key={post.id}><Post {...post} /></li>)}
         </ul>
         <PostForm category={category}/>
       </div>

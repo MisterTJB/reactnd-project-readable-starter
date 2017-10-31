@@ -35,15 +35,15 @@ class Post extends Component {
       return (
 
         !this.state.isEditing ?
-          <div>
-            <a href={ `/${category}/${id}` }>{title}</a>
-            <span>By {author}</span>
-            <span>{moment(Number(timestamp)).fromNow()}</span>
-            <span>{commentCount} comments</span>
-            <span>{voteScore} votes</span>
+          <div className="post__container">
+            <a className="post__title" href={ `/${category}/${id}` }>{title}</a>
+            <span className="post__author">By {author}</span>
+            <span className="post__time">{moment(Number(timestamp)).fromNow()}</span>
+            <span className="post__comment-count">{commentCount} comments</span>
+            <span className="post__score">{voteScore} votes</span>
             <VoteControl postId={id}/>
-            <button onClick={this.enableEditing}>Edit</button>
-            <button onClick={this.deletePost}>Delete</button>
+            <button className="post__edit-button" onClick={this.enableEditing}>Edit</button>
+            <button className="post__delete-button" onClick={this.deletePost}>Delete</button>
 
           </div>
 
