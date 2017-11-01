@@ -28,7 +28,7 @@ class CategoryView extends Component {
 
     return (
       <div>
-        <Categories />
+        <Categories selectedCategory={category}/>
         <SortControl />
         <ul className="posts__container">
           { posts && posts.sort(sortBy).map( post =>

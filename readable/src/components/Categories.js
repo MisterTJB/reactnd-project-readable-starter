@@ -19,16 +19,18 @@ class Categories extends Component {
 
   render(){
 
-    let { categories } = this.props;
+    let { categories, selectedCategory } = this.props;
 
     return (
       <ul className="categories__list-container">
           <li className="category__list-element" key="all">
-            <a href="/">all</a>
+            <a href="/" className={selectedCategory === undefined 
+                                            ? "category__link-active" 
+                                            : "category__link-inactive"}>all</a>
           </li>
           { categories && categories.map( category =>
             <li className="category__list-element" key={category.path}>
-              <Category name={category.name} path={category.path} />
+              <Category selectedCategory={selectedCategory} name={category.name} path={category.path} />
             </li> )
           }
       </ul>

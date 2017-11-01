@@ -285,3 +285,7 @@ select {
     background-color: white;
     font-weight: bold;
 }
+
+.category__link-active {
+    font-weight: bold;
+}
