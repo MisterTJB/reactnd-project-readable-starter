@@ -31,7 +31,8 @@ class Post extends Component {
   }
 
   render() {
-    let { id, title, author, commentCount, category, voteScore, timestamp, body } = this.props;
+    console.log(this.props)
+    let { id, title, author, commentCount, category, voteScore, timestamp, body } = this.props.post;
       return (
 
         !this.state.isEditing ?
@@ -54,10 +55,17 @@ class Post extends Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps)
+  return {
+    post: state.posts.filter( p => p.id === ownProps.postId)[0]
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     removePost: d => dispatch(removePost(d))
   }
 }
 
-export default connect(undefined, mapDispatchToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

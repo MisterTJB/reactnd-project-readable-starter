@@ -27,7 +27,7 @@ class Posts extends Component {
         <ul className="posts__list-container">
           { posts && posts
               .sort(sortBy)
-              .map( (post, index) => <li className="posts__list-item" key={index}><Post {...post} /></li>)
+              .map( (post, index) => <li className="posts__list-item" key={index}><Post postId={post.id} /></li>)
           }
         </ul>
       </div>
