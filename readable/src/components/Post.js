@@ -23,7 +23,7 @@ class Post extends Component {
 
   deletePost = _ => {
 
-    let { id } = this.props;
+    let { id } = this.props.post;
     let { removePost } = this.props;
     deletePost(id).then( _ => {
       removePost(id);
@@ -31,7 +31,7 @@ class Post extends Component {
   }
 
   render() {
-    console.log(this.props)
+    
     let { id, title, author, commentCount, category, voteScore, timestamp, body } = this.props.post;
       return (
 
