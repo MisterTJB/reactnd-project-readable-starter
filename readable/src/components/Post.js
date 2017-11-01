@@ -42,8 +42,8 @@ class Post extends Component {
             <span className="post__comment-count">{commentCount} comments</span>
             <span className="post__score">{voteScore} votes</span>
             <VoteControl postId={id}/>
-            <button className="post__edit-button" onClick={this.enableEditing}>Edit</button>
-            <button className="post__delete-button" onClick={this.deletePost}>Delete</button>
+            <button className="post__edit-button button" onClick={this.enableEditing}>Edit</button>
+            <button className="post__delete-button button" onClick={this.deletePost}>Delete</button>
 
           </div>
 

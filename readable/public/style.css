@@ -1,6 +1,6 @@
 #root {
     max-width: 800px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 5em auto;
 }
 
 .categories__component {
@@ -38,8 +38,8 @@
 
 .posts__list-item {
     list-style: none;
-    border-bottom: 1px solid black;
-    margin-top: 2em;
+    /* border-bottom: 1px solid black; */
+    margin-top: 1em;
 }
 
 .posts__list-item:last-of-type {
@@ -54,13 +54,21 @@
     margin: 0 auto 0 auto;
     padding: 1em;
     font-size: 0.8em;
+    line-height: 1.5em;
 }
 
 .post__title {
     display: block;
+    box-sizing: border-box;
+    padding-bottom: 1em;
     font-weight: bold;
-    text-decoration: none;
     font-size: 1.25em;
+    color: black;
+    text-decoration: none;
+    background: linear-gradient(black, black);
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    background-position: 0 1.5em;
 }
 
 .post__author {
@@ -81,19 +89,56 @@
 .post__score {
 }
 
-.post__edit-button {
-    border: 1px solid grey;
+.button {
+    font-weight: bold;
+    border: 1px solid white;
     border-radius: 5px;
     background: none;
-    background-color: yellowgreen;
+    background-color: black;
     color: white;
-
+    padding-bottom: 0.375em;
+    padding-top: 0.375em;
+    cursor: pointer;
+}
+.post__edit-button {
+    padding-left: 2ch;
+    padding-right: 2ch;
 }
 
 .post__delete-button {
-    background: none;
-    background-color: red;
-    color: white;
-    border: 1px solid grey;
-    border-radius: 5px;
+
+}
+
+.new-post__container {
+    border-top: 1px solid black;
+}
+
+.new-post__header {
+    text-align: center;
+}
+
+.new-post__form {
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+.new-post__label {
+    display: block;
+    margin-top: 1em;
+}
+
+.new-post__input {
+    display: block;
+    width: 50%;
+    height: 2em;
+}
+
+.new-post__category {
+    display: block;
+    margin-top: 0.5em;
+    margin-left: -0.1em;
+}
+
+.new-post__body {
+    width: 100%;
 }

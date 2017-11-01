@@ -70,31 +70,31 @@ class PostForm extends Component {
   }
 
   render() {
-    console.log(this.state.postCategory)
+    
     return (
-      <div>
-
-
-        <h1>New Post</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title</label>
+      <div className="new-post__container">
+        <h1 className="new-post__header">New Post</h1>
+        <form className="new-post__form" onSubmit={this.handleSubmit}>
+          <label className="new-post__label" htmlFor="title">Title</label>
           <input  id="title"
                   name="postTitle"
                   placeholder="Title for the post"
                   onChange={this.onChange}
+                  className="new-post__input"
                   value={this.state.postTitle} />
 
-          <label htmlFor="author">Author</label>
+          <label className="new-post__label" htmlFor="author">Author</label>
           <input  id="author"
                   name="postAuthor"
+                  className="new-post__input"
                   placeholder="Your Name"
                   onChange={this.onChange}
                   value={this.state.postAuthor} />
 
           { !this.props.category &&
 
-            <label htmlFor="category">Category
-              <select id="category" name="postCategory" value={this.props.postCategory} onChange={this.onChange}>
+            <label className="new-post__label" htmlFor="category">Category
+              <select className="new-post__category" id="category" name="postCategory" value={this.props.postCategory} onChange={this.onChange}>
                 {
                   this.props.categories.map( category => {
                     return <option  key={category.path}
@@ -105,14 +105,15 @@ class PostForm extends Component {
             </label>
           }
 
-          <label htmlFor="body">Post</label>
+          <label className="new-post__label" htmlFor="body">Post</label>
           <textarea id="body"
                     name="postBody"
                     rows="5"
+                    className="new-post__body"
                     value={this.state.postBody}
                     onChange={this.onChange} />
 
-          <input type="submit" value="Submit"/>
+          <input className="button" type="submit" value="Submit"/>
         </form>
       </div>
     )
