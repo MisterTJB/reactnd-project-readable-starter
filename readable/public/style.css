@@ -23,6 +23,10 @@
     text-transform: uppercase;
 }
 
+.category__list-element > a {
+    color: black;
+}
+
 .sort-control__select {
     display: block;
     margin-top: 3em;
@@ -38,7 +42,6 @@
 
 .posts__list-item {
     list-style: none;
-    /* border-bottom: 1px solid black; */
     margin-top: 1em;
 }
 
@@ -50,14 +53,16 @@
     
 }
 
-.post__container, .edit-post__container {
+.post__container, 
+.edit-post__container {
     margin: 0 auto 0 auto;
     padding: 1em;
     font-size: 0.8em;
     line-height: 1.5em;
 }
 
-.post__title {
+.post__title,
+.post-detail__title {
     display: block;
     box-sizing: border-box;
     padding-bottom: 1em;
@@ -74,7 +79,8 @@
 .post__author {
 }
 
-.post__author::after {
+.post__author::after,
+.post-detail__author::after {
     content: " ";
     white-space: pre;
 }
@@ -82,8 +88,16 @@
 .post__time {
 }
 
-.post__comment-count {
+.post__comment-count,
+.post-detail__comment-count {
     display: block;
+}
+
+.post-detail__comment-count {
+    font-size: 2em;
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+    text-align: center;
 }
 
 .post__score {
@@ -91,16 +105,18 @@
 
 .button {
     font-weight: bold;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 5px;
     background: none;
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
     padding-bottom: 0.375em;
     padding-top: 0.375em;
     cursor: pointer;
 }
-.post__edit-button {
+
+.post__edit-button, 
+.post-detail__edit-button {
     padding-left: 2ch;
     padding-right: 2ch;
 }
@@ -109,25 +125,30 @@
 
 }
 
-.new-post__container {
+.new-post__container,
+.comments__container {
     border-top: 1px solid black;
 }
 
-.new-post__header {
+.new-post__header,
+.comments__header {
     text-align: center;
 }
 
-.new-post__form {
+.new-post__form,
+.comments__form {
     width: 80%;
     margin: 0 auto 0 auto;
 }
 
-.new-post__label {
+.new-post__label,
+.comments__label {
     display: block;
     margin-top: 1em;
 }
 
-.new-post__input {
+.new-post__input,
+.comments__input {
     display: block;
     width: 50%;
     height: 2em;
@@ -139,15 +160,22 @@
     margin-left: -0.1em;
 }
 
-.new-post__body {
+.new-post__body,
+.comments__body {
     width: 100%;
 }
 
-.edit-post__container {
+.edit-post__container,
+.edit-comment__container {
     border: 1px dashed red;
 }
 
-.edit-post__container::before {
+.edit-comment__container {
+    padding: 1em;
+}
+
+.edit-post__container::before,
+.edit-comment__container::before {
     content: "Editing";
     color: red;
     position: relative;
@@ -155,15 +183,105 @@
     left: -0.5em;
     overflow: visible;
 }
+.edit-comment__container::before {
+    top: -0.5em;
+    left: 0;
+}
 
-.edit-post__input {
+.edit-post__input,
+.edit-comment__input {
     display: block;
     width: 50%;
     height: 1.5em;
     margin-bottom: 1em;
 }
 
-.edit-post__body {
+.edit-post__body,
+.edit-comment__body {
     display: block;
     width: 50%;
+}
+
+.post-detail__container {
+    margin: 0 auto 0 auto;
+    line-height: 1.4em;
+}
+
+.post-detail__back::before {
+    content: "<< ";
+    color: black;
+    position: relative;
+    top: -0.25ch;
+}
+.post-detail__back {
+    display: block;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 1em;
+    margin-left: -5.5em;
+}
+
+.post-detail__score {
+    display: block;
+}
+
+.post-detail__body:last-of-type {
+    margin-bottom: 4em;
+}
+
+.comment__container {
+    padding: 1em;
+    margin-bottom: 0.25em;
+}
+
+.comments__container {
+    padding-top: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.comment__container:nth-of-type(2n+1) {
+    background-color: lightgray;
+}
+
+.comment__container:nth-of-type(2n) {
+    background-color: whitesmoke;
+}
+
+.vote__increment, 
+.vote__decrement {
+    background: none;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+}
+
+.vote__decrement {
+    margin-right: 0.5em;
+}
+
+.vote__increment::after,
+.vote__decrement::after {
+    content: "+";
+    font-size: 1em;
+    font-weight: bold;
+}
+.vote__decrement::after {
+    content: "-";
+}
+
+.vote-control__container {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 0.05em;
+}
+
+select {
+    border: 1px solid black;
+    color: black;
+    background: white;
+    background-color: white;
+    font-weight: bold;
 }

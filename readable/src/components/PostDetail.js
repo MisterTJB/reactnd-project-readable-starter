@@ -69,8 +69,8 @@ class PostDetail extends Component {
     if (this.state.isEditing){
       let { title, body } = this.props.post;
       return (
-        <div>
-          <h1>Edit Post</h1>
+        <div className="post-detail__container">
+          <h1 className="post-detail__header">Edit Post</h1>
           <EditForm postTitle={title}
                     postBody={body}
                     postId={this.props.post.id}
@@ -82,18 +82,22 @@ class PostDetail extends Component {
     let { title, author, timestamp, voteScore, body, id, category, commentCount} = this.props.post
 
     return (
-      <div>
-        <a href={`/${category}`}>Back</a>
-        <h1>{title}</h1>
-        <h2>By {author}</h2>
-        <span>{ moment(Number(timestamp)).fromNow() }</span>
-        <span>{voteScore} votes</span>
-        <span>{commentCount} comments</span>
-        <button onClick={this.enableEditing}>Edit</button>
-        <button onClick={this.deleteCurrentPost}>Delete</button>
+      <div className="post-detail__container">
+        
+        <a className="post-detail__back" href={`/${category}`}>Back</a>
+        <h1 className="post-detail__title">{title}</h1>
+        { body.split('\n').map( (p, i) => <p className="post-detail__body" key={i}>{ p }</p>) }
+        <span className="post-detail__author">By {author}</span>
+        <span className="post-detail__time">{ moment(Number(timestamp)).fromNow() }</span>
+        <span className="post-detail__score">{voteScore} votes</span>
         <VoteControl postId={id}/>
-        { body.split('\n').map( (p, i) => <p key={i}>{ p }</p>) }
-        { this.props.comments.map( comment => { return <Comment key={comment.id} id={comment.id} /> } ) }
+        <button className="post-detail__edit-button button" onClick={this.enableEditing}>Edit</button>
+        <button className="post-detail__delete-button button" onClick={this.deleteCurrentPost}>Delete</button>
+        
+        <div className="comments__container">
+        <span className="post-detail__comment-count">{commentCount} {commentCount === 1 ? "comment" : "comments"}</span>
+          { this.props.comments.map( comment => { return <Comment key={comment.id} id={comment.id} /> } ) }
+        </div>
         <CommentForm parentId={id}/>
       </div>
     )

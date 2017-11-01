@@ -32,22 +32,26 @@ class Comment extends Component {
 
     let { author, voteScore, timestamp, id, body } = this.props.comment;
 
-    return (
-      <div>
-        <h1>{author}</h1>
-
-        { this.state.isEditing
-          ? <CommentEditForm  finishedEditing={this.disableEditing}
-                              commentId={id}
-                              body={body} />
-          : <p>{body}</p>
-        }
-        <button onClick={this.enableEditing}>Edit</button>
-        <button onClick={this.deleteComment}>Delete</button>
-        <span>{ moment(Number(timestamp)).fromNow() }</span>
-        <span>({voteScore} votes)</span>
+    return this.state.isEditing 
+    ? 
+    <div className="comment__container">
+      <CommentEditForm  finishedEditing={this.disableEditing} 
+                        commentId={id}
+                        body={body} />
+    </div>
+    :
+     <div className="comment__container">
+        <h1 className="comment__author">{author}</h1>
+        <span className="comment__time">{ moment(Number(timestamp)).fromNow() }</span>
+        <span className="comment__score"> ({voteScore} votes)</span>
+        <p className="comment__body">{body}</p>
         <CommentVoteControl id={id} />
-      </div>)
+        <button className="button" onClick={this.enableEditing}>Edit</button>
+        <button className="button" onClick={this.deleteComment}>Delete</button>
+        
+        
+        
+      </div>
   }
 }
 

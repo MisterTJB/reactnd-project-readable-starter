@@ -23,9 +23,9 @@ class CommentVoteControl extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.decrementVote}>-</button>
-        <button onClick={this.incrementVote}>+</button>
+      <div className="vote-control__container">
+        <button className="vote__decrement" onClick={this.decrementVote}></button>
+        <button className="vote__increment" onClick={this.incrementVote}></button>
       </div>
     )
   }

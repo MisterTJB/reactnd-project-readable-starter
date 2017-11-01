@@ -42,16 +42,17 @@ class CommentEditForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="edit-comment__container">
+        <form className="edit-comment__form" onSubmit={this.handleSubmit}>
           <textarea rows="5"
                     id="body"
                     name="body"
+                    className="edit-comment__body"
                     placeholder="What do you think?"
                     onChange={this.onChange}
                     value={this.state.body} />
-          <input type="submit" value="Save"/>
-          <button onClick={this.handleCancel}>Cancel</button>
+          <input className="button" type="submit" value="Save"/>
+          <button className="button" onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
     )
