@@ -5,10 +5,10 @@ create a simple Reddit clone.
 
 ## Installation
 
-1. Clone this repository by running `git clone ` from a terminal
+1. Clone this repository by running `git clone https://github.com/MisterTJB/readable-react.git` from a terminal
 2. Navigate to the `api-server` subdirectory
 3. Run `yarn install`. When the installation completes, run `yarn start`
-4. Open a second terminal and navigate to the `readable` subdirectory
+4. Open a second terminal and navigate to the `readable` subdirectory (i.e. `path-to-download/readable-react/readable`)
 5. Run `yarn install`. When the installation completes, run `yarn start`
 
 This should launch a browser window with the application running inside of 
