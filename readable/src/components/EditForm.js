@@ -43,11 +43,12 @@ class EditForm extends Component {
   render() {
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title</label>
+      <div className="edit-post__container">
+        <form className="edit-post__form" onSubmit={this.handleSubmit}>
+          <label className="edit-post__label" htmlFor="title">Title</label>
           <input  id="title"
                   name="postTitle"
+                  className="edit-post__input"
                   placeholder="Title for the post"
                   onChange={this.onChange}
                   value={this.state.postTitle} />
@@ -55,11 +56,12 @@ class EditForm extends Component {
           <label htmlFor="body">Post</label>
           <textarea id="body"
                     name="postBody"
+                    className="edit-post__body"
                     rows="5" value={this.state.postBody}
                     onChange={this.onChange} />
 
-          <input type="submit" value="Submit"/>
-          <button onClick={this.handleCancel}>Cancel</button>
+          <input type="submit" className="button" value="Submit"/>
+          <button className="edit__cancel-button button" onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
     )

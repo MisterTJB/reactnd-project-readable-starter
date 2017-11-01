@@ -50,7 +50,7 @@
     
 }
 
-.post__container {
+.post__container, .edit-post__container {
     margin: 0 auto 0 auto;
     padding: 1em;
     font-size: 0.8em;
@@ -141,4 +141,29 @@
 
 .new-post__body {
     width: 100%;
+}
+
+.edit-post__container {
+    border: 1px dashed red;
+}
+
+.edit-post__container::before {
+    content: "Editing";
+    color: red;
+    position: relative;
+    top: -0.5em;
+    left: -0.5em;
+    overflow: visible;
+}
+
+.edit-post__input {
+    display: block;
+    width: 50%;
+    height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.edit-post__body {
+    display: block;
+    width: 50%;
 }
