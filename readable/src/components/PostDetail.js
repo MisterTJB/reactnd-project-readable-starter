@@ -13,7 +13,8 @@ class PostDetail extends Component {
 
   state = {
     isEditing: false,
-    didDelete: false
+    didDelete: false,
+    isDeleted: false
   }
 
   componentWillMount(){
@@ -34,7 +35,7 @@ class PostDetail extends Component {
             addComments(result, id)
           }
         )}).catch( rej => {
-          this.setState( { didDelete: true } )
+          this.setState( { isDeleted: true } )
         })
   }
 
@@ -60,6 +61,16 @@ class PostDetail extends Component {
 
     if (this.state.didDelete) {
       return <Redirect to="/" />
+    }
+
+    if (this.state.isDeleted){
+      return (
+        <div className="404__container">
+          <h1 className="404__container">404</h1>
+          <p className="404_paragraph">Sorry bro, looks like someone deleted this post</p>
+          <a className="404__link" href="/">Take me home</a>
+        </div>
+      )
     }
 
     if (!this.props.post || !this.props.comments){
