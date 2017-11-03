@@ -77,7 +77,11 @@ Category view) or standalone (if the post is edited from the Post Detail view) e
 
 #### Deleting
 
-Posts can be deleted from Home, Category and Post Detail views by clicking the Delete button. When a post is deleted, it is removed from the database and is no longer accessible at its URL — the user will be redirected back to the main page if they attempt to access a deleted post.
+Posts can be deleted from Home, Category and Post Detail views by clicking the Delete button. When a post is deleted, it is removed from the database and is no longer accessible at its URL — the user will be redirected back to the main page when they delete a post.
+
+Additionally, if a user attempts to access a post that has been deleted, they will be presented with an error page.
+
+![](screenshots/404.png)
 
 ### Creating, Editing, and Deleting Comments
 
